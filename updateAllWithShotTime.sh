@@ -23,6 +23,7 @@ if ls -1qA * 2>/dev/null | grep -q .
 
 then
     # Loop over all JPG, MOV & MP4 files in the current directory
+    jhead -ft *.PNG
     jhead -ft *.jpeg
     jhead -ft *.JPG
     exiftool "-FileModifyDate<MediaCreateDate" -d "%Y:%m:%d %H:%M:%S" *.MOV
