@@ -15,7 +15,10 @@ if ls -1qA * 2>/dev/null | grep -q .
 
 then
   # 如果有文件，使用jhead更新时间戳
-  jhead -ft *
+  jhead -ft *.PNG
+
+  jhead -ft *.jpeg
+  jhead -ft *.JPG
   echo "Timestamps updated for all files in the current directory."
 else
   echo "No files found in the current directory."

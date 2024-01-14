@@ -24,6 +24,7 @@ if ls -1qA * 2>/dev/null | grep -q .
 then
     # Loop over all .MOV & MP4 files in the current directory
     exiftool "-FileModifyDate<MediaCreateDate" -d "%Y:%m:%d %H:%M:%S" *.MOV
+    exiftool "-FileModifyDate<MediaCreateDate" -d "%Y:%m:%d %H:%M:%S" *.mov
     exiftool "-FileModifyDate<MediaCreateDate" -d "%Y:%m:%d %H:%M:%S" *.mp4
 else
     echo "No files found in the current directory."
