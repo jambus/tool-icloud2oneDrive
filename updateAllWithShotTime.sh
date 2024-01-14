@@ -38,7 +38,7 @@ then
         case "$extension" in
             jpg|jpeg|png)
                 # Check if the DateTimeOriginal tag is set
-                if ! exiftool -DateTimeOriginal "$file" | grep -q "DateTimeOriginal"
+                if ! exiftool -DateTimeOriginal "$file" | grep -q "Date/Time Original"
                 then
                     # If the DateTimeOriginal tag is not set, update it with the specified time
                     exiftool -overwrite_original -DateTimeOriginal="$time_to_set" "$file"
