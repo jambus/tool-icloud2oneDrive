@@ -19,7 +19,7 @@ trap finish EXIT
 echo "Start process"
 
 # Specify the time you want to set
-time_to_set="2022:02:16 12:50:00"
+time_to_set="2023:08:03 11:52:00"
 
 # 检查当前目录下是否有文件
 if ls -1qA * 2>/dev/null | grep -q .
@@ -41,11 +41,17 @@ then
                 if ! exiftool -DateTimeOriginal "$file" | grep -q "Date/Time Original"
                 then
                     # If the DateTimeOriginal tag is not set, update it with the specified time
+                    echo $file "DateTimeOriginal not set"
                     exiftool -overwrite_original -DateTimeOriginal="$time_to_set" "$file"
                 fi
                 exiftool -overwrite_original "-FileModifyDate<DateTimeOriginal" -d "%Y:%m:%d %H:%M:%S" "$file"
                 ;;
             mov|mp4)
+                if [ -z "$(exiftool -MediaCreateDate '$file')"]
+                then
+                    echo $file "Media Create Date not set"
+                    exiftool -overwrite_original -MediaCreateDate="$time_to_set" "$file"
+                fi
                 exiftool -overwrite_original "-FileModifyDate<MediaCreateDate" -d "%Y:%m:%d %H:%M:%S" "$file"
                 ;;
         esac
