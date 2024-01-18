@@ -57,7 +57,7 @@ then
         esac
     done
 
-    #exiftool -MediaCreateDate="2022:04:05 11:00:00" *.MOV 
+    #exiftool -MediaCreateDate="2022:09:09 19:41:00" *.MOV 
     #exiftool -DateTimeOriginal="2022:04:05 11:00:00" *.PNG
     #exiftool -DateTimeOriginal="2022:04:05 11:00:00" *.jpeg
     #exiftool "-FileModifyDate<DateTimeOriginal" -d "%Y:%m:%d %H:%M:%S" *.jpeg
@@ -67,6 +67,7 @@ then
     #exiftool "-FileModifyDate<MediaCreateDate" -d "%Y:%m:%d %H:%M:%S" *.mov
 
     #exiftool "-FileModifyDate<MediaCreateDate" -d "%Y:%m:%d %H:%M:%S" *.mp4
+    #jhead -ft *.jpeg
     echo "Timestamps updated for all files in the current directory."
 else
     echo "No files found in the current directory."
